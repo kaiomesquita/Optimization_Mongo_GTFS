@@ -1,0 +1,63 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Apr 18 19:14:56 2020
+
+@author: USER
+"""
+from pymongo import MongoClient
+
+def colecao(identificador):
+    #conectar ao mongo (tem que ta aberto o mongod)
+    conn = MongoClient('localhost', 27017)
+    #criando um banco 
+    gtfs = conn.gtfs
+    
+    if identificador == "agency":
+        #criar coleção
+        collection = gtfs.agency
+        return collection
+    
+    elif identificador == "calendar":
+        #criar coleção
+        collection = gtfs.calendar
+        return collection
+    
+    elif identificador == "calendar_dates":
+        #criar coleção
+        collection = gtfs.calendar_dates
+        return collection
+    
+    elif identificador == "fare_attributes":
+        #criar coleção
+        collection = gtfs.fare_attributes
+        return collection
+    
+    elif identificador == "fare_rules":
+        #criar coleção
+        collection = gtfs.fare_rules
+        return collection
+    
+    elif identificador == "routes":
+        #criar coleção
+        collection = gtfs.routes
+        return collection
+    
+    elif identificador == "shapes":
+        #criar coleção
+        collection = gtfs.shapes
+        return collection
+    
+    elif identificador == "stop_times":
+        #criar coleção
+        collection = gtfs.stop_times
+        return collection
+    
+    elif identificador == "stops":
+        #criar coleção
+        collection = gtfs.stops
+        return collection
+    
+    elif identificador == "trips":
+        #criar coleção
+        collection = gtfs.trips
+        return collection
