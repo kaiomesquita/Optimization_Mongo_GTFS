@@ -1,0 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Apr 18 11:27:40 2020
+
+@author: USER
+"""
+def converte(ler):
+    quebrar = ler.split('.')
+    nome_inicio = quebrar[0]
+    csv = quebrar[0] + '.csv'
+    return csv, nome_inicio
+
