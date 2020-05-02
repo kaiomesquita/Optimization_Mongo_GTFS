@@ -1,0 +1,56 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Apr 18 07:33:12 2020
+
+@author: USER
+"""
+
+'''
+1: Ver e tentar entender os dados do GTFS
+2: Ler os dados do GTSF pelo Python ( salvar no formato JSON)
+3: Tentar salvar no mongo(meu) pelo python
+4: Puxar dados do mongo para gerar gráficos pelo Python
+5: Criar aplicação para visuaizar os gráficos
+6: Mais na frente criar um site para fazer a mesma visualização (dashboard)
+(Cx Freeze - Criar executável)
+(Tkinter - Interface gráfica)
+(Pesquisar sobre o Shiny)
+'''
+
+from convertearquivo import converte
+import os
+
+
+#Lendo arquivos da pasta
+for _, _, arquivos in os.walk("C:\\Users\\USER\\Desktop\\Projeto Big Date\\GTFS\\exportacao_2020-02-27"):
+    print(len(arquivos))
+    
+    
+    
+    
+    comp = 0
+    while comp < len(arquivos):
+        #ler o arquivo txt
+        nome = str(arquivos[comp])
+        arquivo = open('C:\\Users\\USER\\Desktop\\Projeto Big Date\\GTFS\\exportacao_2020-02-27\\' + nome, 'r', encoding='utf-8')
+        ler = arquivo.read()
+        
+        novo_nome, nome_inicio = converte(arquivos[comp])
+        
+      
+        
+        #Quebra do arquivo em lista e salvameto em frmato csv
+        salvar_csv = open("C:\\Users\\USER\\Desktop\\Projeto Big Date\\GTFS\\exportacao_2020-02-27\\csv\\" + novo_nome,'w')
+        rows = ler.split('\n')
+    
+        for row in rows:
+            split_row = row.split(",")
+            concatenar = ';'.join(split_row)
+            salvar_csv.write(concatenar + "\n")
+            
+        
+        
+        #fechamento do arquivo
+        arquivo.close()
+        salvar_csv.close()
+        comp += 1
