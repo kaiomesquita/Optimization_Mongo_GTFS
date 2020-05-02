@@ -6,16 +6,7 @@ Created on Sat Apr 18 07:33:12 2020
 """
 
 '''
-1: Ver e tentar entender os dados do GTFS
-2: Ler os dados do GTSF pelo Python ( salvar no formato JSON)
-3: Tentar salvar no mongo(meu) pelo python
-4: Puxar dados do mongo para gerar gráficos pelo Python
-5: Criar aplicação para visuaizar os gráficos
-6: Mais na frente criar um site para fazer a mesma visualização (dashboard)
-(Cx Freeze - Criar executável)
-(Tkinter - Interface gráfica)
-(Pesquisar sobre o Shiny)
-'''
+
 
 from convertearquivo import converte
 import os
