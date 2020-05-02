@@ -1,0 +1,76 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Apr 18 11:03:45 2020
+
+@author: USER
+"""
+
+from convertearquivo import converte
+from colecao_mongo import colecao
+import os
+import csv
+
+#definição de cotadores
+lista = []
+verification = 0
+argumentos_banco = {}
+cont = 0
+
+
+
+#Lendo arquivos da pasta
+for _, _, arquivos in os.walk("C:\\Users\\USER\\Desktop\\Projeto Big Date\\GTFS\\exportacao_2020-02-27\\csv"):
+    
+    
+    
+    comp = 0
+    while comp < len(arquivos):
+        
+        novo_nome, nome_inicio = converte(arquivos[comp])
+        
+
+        
+        collection = colecao(nome_inicio)
+        
+        with open('C:\\Users\\USER\\Desktop\\Projeto Big Date\\GTFS\\exportacao_2020-02-27\\csv\\' + novo_nome, 'r') as csv_arq:
+            csv_dict = csv.reader(csv_arq)
+            cabecalho = True
+            
+            for row in csv_dict:
+                
+                if verification == 0:
+                 
+                    for row2 in row:
+                        
+                        split_row = row2.split(";")
+                        cabecalho = False
+                
+                if verification == 1:
+            
+                    for row3 in row:
+                        
+                        split_row2 = row3.split(";")
+                        
+                        
+                        while cont < len(split_row2):
+                            
+                            argumentos_banco[split_row[cont]] = split_row2[cont]
+                            cont += 1
+                        
+                        #inserindo dados e eu ID
+                        collection.insert(argumentos_banco)
+                        argumentos_banco = {}
+                            
+        
+                        
+                        cont = 0
+                verification = 1
+        verification = 0      
+        csv_arq.close()
+        comp += 1   
+        
+        
+        
+
+
+
